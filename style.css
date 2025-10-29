@@ -114,3 +114,52 @@ body {
   100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
 }
 
+/* -------------------- PARTICULAS ROSADAS -------------------- */
+.particle {
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  background: radial-gradient(circle, #ffb3b3, rgba(255,179,179,0));
+}
+
+/* Animación suave y romántica de partículas */
+@keyframes particleFloat {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-150px) translateX(calc((50% - 25px) * var(--rand))) scale(1.2); opacity: 0; }
+}
+
+/* Aparición suave de textos */
+.text, #heart, #cardContent, #counter {
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Animación de sobre y carta */
+#envelope {
+  transition: transform 1.2s ease, opacity 1s ease;
+}
+
+#card {
+  transition: transform 1.5s ease, opacity 1s ease;
+}
+
+/* Corazones flotantes con giro */
+.heart-fly {
+  position: absolute;
+  font-size: 1.5rem;
+  color: #ff4d6d;
+  pointer-events: none;
+  animation: flyUp 1.5s ease-out forwards, spin 1.5s linear forwards;
+  z-index: 5;
+}
+
+@keyframes flyUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
