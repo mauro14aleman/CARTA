@@ -3,6 +3,7 @@ function typeWriter(el, text, speed = 30, callback){
   let i = 0;
   el.innerHTML = '';
   el.style.opacity = 1;
+  el.style.transform = 'translateY(0)';
   function typing(){
     if(i < text.length){
       el.innerHTML += text.charAt(i);
@@ -17,14 +18,16 @@ function typeWriter(el, text, speed = 30, callback){
 
 // -------------------- SECUENCIA --------------------
 setTimeout(()=>{
-  typeWriter(document.getElementById('text1'),'Para mi negrito 🩷',80, ()=>{
+  const text1 = document.getElementById('text1');
+  typeWriter(text1,'Para mi negrito 🩷',80, ()=>{
     setTimeout(()=>{
-      document.getElementById('text1').style.opacity = 0;
+      text1.style.opacity = 0;
 
-      document.getElementById('heart').style.opacity = 1;
+      const heartEl = document.getElementById('heart');
+      heartEl.style.opacity = 1;
       typeWriter(document.getElementById('text2'),'¿Sabes por qué te amo?',60,()=>{
         setTimeout(()=>{
-          document.getElementById('heart').style.opacity = 0;
+          heartEl.style.opacity = 0;
           document.getElementById('text2').style.opacity = 0;
 
           let envelope = document.getElementById('envelope');
@@ -72,7 +75,7 @@ function updateCounter(){
 
 setInterval(updateCounter,1000);
 
-// -------------------- PARTICULAS BRILLANTES --------------------
+// -------------------- PARTICULAS BRILLANTES ROSADAS --------------------
 const particlesContainer = document.getElementById('particles');
 
 function createParticle(){
@@ -80,27 +83,17 @@ function createParticle(){
   particle.classList.add('particle');
   particle.style.left = Math.random() * window.innerWidth + 'px';
   particle.style.top = Math.random() * window.innerHeight + 'px';
-  particle.style.width = particle.style.height = (2 + Math.random()*4) + 'px';
-  particle.style.opacity = Math.random();
-  particle.style.background = 'radial-gradient(white, rgba(255,255,255,0))';
-  particle.style.position = 'absolute';
-  particle.style.borderRadius = '50%';
-  particle.style.pointerEvents = 'none';
-  particle.style.animation = `particleFloat ${3 + Math.random()*2}s ease-out forwards`;
+  const size = 2 + Math.random()*6;
+  particle.style.width = particle.style.height = size + 'px';
+  particle.style.opacity = 0.5 + Math.random()*0.5;
+  particle.style.setProperty('--rand', Math.random()*2 - 1); 
+  particle.style.animationDuration = (3 + Math.random()*2) + 's';
   particlesContainer.appendChild(particle);
 
   setTimeout(()=>{ particle.remove(); }, 5000);
 }
 
-setInterval(createParticle, 200);
-
-// -------------------- ANIMACION PARTICULAS --------------------
-const styleSheet = document.styleSheets[0];
-styleSheet.insertRule(`
-@keyframes particleFloat {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(-100px) translateX(${(Math.random()-0.5)*50}px); opacity: 0; }
-}`, styleSheet.cssRules.length);
+setInterval(createParticle, 150);
 
 // -------------------- CORAZONES AL TOCAR --------------------
 document.body.addEventListener('click', function(e){
@@ -112,3 +105,4 @@ document.body.addEventListener('click', function(e){
 
   setTimeout(()=>{ heart.remove(); }, 1500);
 });
+
