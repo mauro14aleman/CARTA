@@ -3,49 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carta para mi negrito 🩷</title>
+<title>Carta Digital Romántica 🩷</title>
 
-<!-- Fuentes bonitas y legibles -->
+<!-- Fuentes bonitas -->
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
-<!-- Estilos CSS -->
-<link rel="stylesheet" href="style.css">
+<style>
+/* -------------------- RESET -------------------- */
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  height:100vh; width:100vw;
+  font-family:'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #1a1a1a, #3a1f1f);
+  overflow:hidden;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* -------------------- PARTICULAS -------------------- */
+#particles { position:absolute; width:100%; height:100%; pointer-events:none; z-index:0; }
+.particle {
+  border-radius:50%;
+  position:absolute;
+  pointer-events:none;
+  background: radial-gradient(circle, #ffb3b3, rgba(255,179,179,0));
+}
+
+/* -------------------- TEXTOS -------------------- */
+.text {
+  position:absolute;
+  text-align:center;
+  color:#ffe0e0;
+  font-family:'Dancing Script', cursive;
+  font-size:clamp(1.5rem,5vw,3rem);
+  opacity:0;
+  transform:translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+  z-index:2;
+}
+
+#heart {
+  position:absolute;
+  font-size:clamp(2rem,8vw,5rem);
+  opacity:0;
+  color:#ff4d6d;
+  transition: opacity 1s ease, transform 1s ease;
+  z-index:2;
+}
+
+/* Sobre y carta */
+#envelope, #card {
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%) scale(0.8) rotateX(90deg);
+  opacity:0;
+  font-size:clamp(3rem,10vw,6rem);
+  z-index:2;
+  color:#ffd6d6;
+  transition: all 1.2s ease;
+}
+
+#cardContent {
+  opacity:0;
+  padding:20px;
+  color:#fff;
+  font-family:'Dancing Script', cursive;
+  font-size:clamp(1rem,2.5vw,1.5rem);
+  line-height:1.5;
+  max-width:90vw;
+  background: rgba(0,0,0,0.3);
+  border-radius:15px;
+  text-align:center;
+  transition: opacity 1s ease;
+}
+
+/* Contador */
+#counter {
+  position:absolute;
+  bottom:20px;
+  width:100%;
+  text-align:center;
+  font-size:clamp(1.5rem,4vw,2.5rem);
+  color:#ffb3b3;
+  font-weight:bold;
+  opacity:0;
+  z-index:3;
+  text-shadow:0 0 10px #ff7f7f;
+}
+
+/* Corazones al tocar */
+.heart-fly {
+  position:absolute;
+  font-size:1.5rem;
+  color:#ff4d6d;
+  pointer-events:none;
+  animation:flyUp 1.5s ease-out forwards, spin 1.5s linear forwards;
+  z-index:5;
+}
+@keyframes flyUp {
+  0% { transform: translateY(0) scale(1); opacity:1; }
+  100% { transform: translateY(-150px) scale(1.5); opacity:0; }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
 </head>
 <body>
 
-<!-- Fondo de partículas -->
 <div id="particles"></div>
 
-<!-- Texto inicial -->
 <div id="text1" class="text">Para mi negrito 🩷</div>
-
-<!-- Pregunta con corazón abajo -->
 <div id="text2" class="text">¿Sabes por qué te amo?</div>
 <div id="heart">❤️</div>
-
-<!-- Carta (sobre) -->
 <div id="envelope">💌</div>
-
-<!-- Carta abierta con papel -->
 <div id="card">
   <div id="cardContent">
     Te amo porque, aunque nuestra historia no ha sido fácil, ha sido real...
     Hemos tenido momentos duros, discusiones, malentendidos y hasta días en los que parecía que todo se venía abajo… pero aun así, aquí seguimos.
     Y si seguimos, es porque hay amor del verdadero, de ese que no se rinde, que duele, que lucha y que se aferra con el corazón entero.
 
-    A veces me equivoco, digo cosas sin pensar o dejo que mis emociones me ganen, pero nunca quiero que confundas eso con desamor. No hay un solo día en que deje de amarte. Aunque no siempre lo sepa expresar, tú estás en mi mente desde que amanece hasta que me duermo.
+    A veces me equivoco, digo cosas sin pensar o dejo que mis emociones me ganen, pero nunca quiero que confundas eso con desamor.
+    
+    No hay un solo día en que deje de amarte. Aunque no siempre lo sepa expresar, tú estás en mi mente desde que amanece hasta que me duermo.
     No quiero que dudes ni un segundo de lo que siento por ti, porque si algo tengo claro, es que te amo con todo lo que soy.
 
-    Contigo he aprendido que el amor no es solo risas, abrazos o palabras bonitas… también son lágrimas, paciencia, perdón y ganas de seguir cuando todo se complica. Y yo quiero seguir contigo, aun con los errores, aun con las heridas, aun con todo. Porque te elijo a ti, una y otra vez, incluso cuando el mundo se pone en contra.
+    Contigo he aprendido que el amor no es solo risas, abrazos o palabras bonitas… también son lágrimas, paciencia, perdón y ganas de seguir
+    cuando todo se complica. Y yo quiero seguir contigo, aun con los errores, aun con las heridas, aun con todo. Porque te elijo a ti, una y otra vez,
+    incluso cuando el mundo se pone en contra.
 
-    Tú me haces sentir cosas que nadie más ha logrado. Me haces querer ser mejor, aprender a amar sin miedo y a valorar cada segundo que pasamos juntos. Eres mi caos y mi calma, mi punto débil y mi fuerza al mismo tiempo.
-    Si algún día llegas a dudar de lo que siento, solo recuerda esto: no importa cuántas veces discutamos, cuánto nos alejemos o cuánto duela… siempre voy a volver a ti, porque mi corazón sabe muy bien a dónde pertenece.
+    Tú me haces sentir cosas que nadie más ha logrado. Me haces querer ser mejor, aprender a amar sin miedo y a valorar cada segundo que pasamos juntos. 
+    Eres mi caos y mi calma, mi punto débil y mi fuerza al mismo tiempo.
+    Si algún día llegas a dudar de lo que siento, solo recuerda esto: no importa cuántas veces discutamos, cuánto nos alejemos o cuánto duela… siempre 
+    voy a volver a ti, porque mi corazón sabe muy bien a dónde pertenece.
 
     Te amo más de lo que puedo decir, más de lo que puedo demostrar y más de lo que imaginas. Eres mi historia favorita, incluso con todos sus capítulos difíciles 🩷
   </div>
 </div>
 
-<!-- Contador grande y legible -->
 <div id="counter"></div>
 
 <!-- YouTube embed discreto -->
@@ -53,7 +151,75 @@
   src="https://www.youtube.com/embed/GYXI1I28Rr8?autoplay=1&loop=1&playlist=GYXI1I28Rr8"
   frameborder="0" allow="autoplay; encrypted-media"></iframe>
 
-<!-- JS -->
-<script src="script.js"></script>
-</body>
-</html>
+<script>
+// -------------------- ESCRITURA --------------------
+function typeWriter(el, text, speed = 30, callback){
+  let i = 0;
+  el.innerHTML = '';
+  el.style.opacity = 1;
+  el.style.transform = 'translateY(0)';
+  function typing(){
+    if(i < text.length){
+      el.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    } else if(callback){
+      callback();
+    }
+  }
+  typing();
+}
+
+// -------------------- SECUENCIA --------------------
+setTimeout(()=>{
+  const text1 = document.getElementById('text1');
+  typeWriter(text1,'Para mi negrito 🩷',80, ()=>{
+    setTimeout(()=>{
+      text1.style.opacity = 0;
+
+      const heartEl = document.getElementById('heart');
+      heartEl.style.opacity = 1;
+      typeWriter(document.getElementById('text2'),'¿Sabes por qué te amo?',60,()=>{
+        setTimeout(()=>{
+          heartEl.style.opacity = 0;
+          document.getElementById('text2').style.opacity = 0;
+
+          let envelope = document.getElementById('envelope');
+          envelope.style.opacity = 1;
+
+          setTimeout(()=>{
+            envelope.style.transform = 'translateX(-250px) scale(1.2)';
+            setTimeout(()=>{
+              envelope.style.opacity = 0;
+              let card = document.getElementById('card');
+              card.style.transform = 'scale(1) rotateX(0deg)';
+
+              setTimeout(()=>{
+                let content = document.getElementById('cardContent');
+                content.style.opacity = 1;
+
+                setTimeout(()=>{
+                  document.getElementById('counter').style.opacity = 1;
+                },2000);
+
+              },1000);
+
+            },1000);
+          },2000);
+
+        },5000);
+      });
+    },4000);
+  });
+},500);
+
+// -------------------- TEMPORIZADOR --------------------
+function updateCounter(){
+  const startDate = new Date("2025-08-24T05:30:00");
+  const now = new Date();
+  const diff = now - startDate;
+
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+  const seconds = Math.floor((diff % (100
