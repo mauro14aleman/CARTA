@@ -57,12 +57,15 @@ body {
 #envelope, #card {
   position:absolute;
   top:50%; left:50%;
-  transform:translate(-50%,-50%) scale(0.8) rotateX(90deg);
+  transform:translate(-50%, -50%) scale(0.8);
   opacity:0;
   font-size:clamp(3rem,10vw,6rem);
   z-index:2;
   color:#ffd6d6;
   transition: all 1.2s ease;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 #cardContent {
@@ -73,6 +76,8 @@ body {
   font-size:clamp(1rem,2.5vw,1.5rem);
   line-height:1.5;
   max-width:90vw;
+  max-height:80vh;
+  overflow-y:auto;
   background: rgba(0,0,0,0.3);
   border-radius:15px;
   text-align:center;
@@ -126,19 +131,13 @@ body {
     Hemos tenido momentos duros, discusiones, malentendidos y hasta días en los que parecía que todo se venía abajo… pero aun así, aquí seguimos.
     Y si seguimos, es porque hay amor del verdadero, de ese que no se rinde, que duele, que lucha y que se aferra con el corazón entero.
 
-    A veces me equivoco, digo cosas sin pensar o dejo que mis emociones me ganen, pero nunca quiero que confundas eso con desamor.
-    
-    No hay un solo día en que deje de amarte. Aunque no siempre lo sepa expresar, tú estás en mi mente desde que amanece hasta que me duermo.
+    A veces me equivoco, digo cosas sin pensar o dejo que mis emociones me ganen, pero nunca quiero que confundas eso con desamor. No hay un solo día en que deje de amarte. Aunque no siempre lo sepa expresar, tú estás en mi mente desde que amanece hasta que me duermo.
     No quiero que dudes ni un segundo de lo que siento por ti, porque si algo tengo claro, es que te amo con todo lo que soy.
 
-    Contigo he aprendido que el amor no es solo risas, abrazos o palabras bonitas… también son lágrimas, paciencia, perdón y ganas de seguir
-    cuando todo se complica. Y yo quiero seguir contigo, aun con los errores, aun con las heridas, aun con todo. Porque te elijo a ti, una y otra vez,
-    incluso cuando el mundo se pone en contra.
+    Contigo he aprendido que el amor no es solo risas, abrazos o palabras bonitas… también son lágrimas, paciencia, perdón y ganas de seguir cuando todo se complica. Y yo quiero seguir contigo, aun con los errores, aun con las heridas, aun con todo. Porque te elijo a ti, una y otra vez, incluso cuando el mundo se pone en contra.
 
-    Tú me haces sentir cosas que nadie más ha logrado. Me haces querer ser mejor, aprender a amar sin miedo y a valorar cada segundo que pasamos juntos. 
-    Eres mi caos y mi calma, mi punto débil y mi fuerza al mismo tiempo.
-    Si algún día llegas a dudar de lo que siento, solo recuerda esto: no importa cuántas veces discutamos, cuánto nos alejemos o cuánto duela… siempre 
-    voy a volver a ti, porque mi corazón sabe muy bien a dónde pertenece.
+    Tú me haces sentir cosas que nadie más ha logrado. Me haces querer ser mejor, aprender a amar sin miedo y a valorar cada segundo que pasamos juntos. Eres mi caos y mi calma, mi punto débil y mi fuerza al mismo tiempo.
+    Si algún día llegas a dudar de lo que siento, solo recuerda esto: no importa cuántas veces discutamos, cuánto nos alejemos o cuánto duela… siempre voy a volver a ti, porque mi corazón sabe muy bien a dónde pertenece.
 
     Te amo más de lo que puedo decir, más de lo que puedo demostrar y más de lo que imaginas. Eres mi historia favorita, incluso con todos sus capítulos difíciles 🩷
   </div>
@@ -192,7 +191,8 @@ setTimeout(()=>{
             setTimeout(()=>{
               envelope.style.opacity = 0;
               let card = document.getElementById('card');
-              card.style.transform = 'scale(1) rotateX(0deg)';
+              card.style.opacity = 1;
+              card.style.transform = 'translate(-50%, -50%) scale(1)';
 
               setTimeout(()=>{
                 let content = document.getElementById('cardContent');
@@ -202,7 +202,7 @@ setTimeout(()=>{
                   document.getElementById('counter').style.opacity = 1;
                 },2000);
 
-              },1000);
+              },800);
 
             },1000);
           },2000);
@@ -222,4 +222,40 @@ function updateCounter(){
   const days = Math.floor(diff / (1000*60*60*24));
   const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
   const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
-  const seconds = Math.floor((diff % (100
+  const seconds = Math.floor((diff % (1000*60)) / 1000);
+
+  document.getElementById('counter').innerText = `Llevo contigo ${days}d ${hours}h ${minutes}m ${seconds}s 🩷`;
+}
+setInterval(updateCounter,1000);
+
+// -------------------- PARTICULAS BRILLANTES --------------------
+const particlesContainer = document.getElementById('particles');
+function createParticle(){
+  const particle = document.createElement('div');
+  particle.classList.add('particle');
+  particle.style.left = Math.random() * window.innerWidth + 'px';
+  particle.style.top = Math.random() * window.innerHeight + 'px';
+  const size = 2 + Math.random()*6;
+  particle.style.width = particle.style.height = size + 'px';
+  particle.style.opacity = 0.5 + Math.random()*0.5;
+  particle.style.setProperty('--rand', Math.random()*2 - 1);
+  particle.style.animationDuration = (3 + Math.random()*2) + 's';
+  particlesContainer.appendChild(particle);
+  setTimeout(()=>{ particle.remove(); }, 5000);
+}
+setInterval(createParticle, 150);
+
+// -------------------- CORAZONES AL TOCAR --------------------
+document.body.addEventListener('click', function(e){
+  const heart = document.createElement('div');
+  heart.classList.add('heart-fly');
+  heart.style.left = (e.clientX - 10) + 'px';
+  heart.style.top = (e.clientY - 10) + 'px';
+  document.body.appendChild(heart);
+  setTimeout(()=> heart.remove(), 1500);
+});
+</script>
+
+</body>
+</html>
+
