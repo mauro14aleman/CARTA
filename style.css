@@ -1,92 +1,116 @@
-html, body {
-  margin:0;
-  padding:0;
-  height:100%;
-  overflow:hidden;
-  background: linear-gradient(to bottom, #b3e0ff, #cde6ff);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-family:'Roboto', sans-serif;
+/* -------------------- RESET -------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Textos */
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #1a1a1a, #3a1f1f); /* Fondo cálido oscuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* -------------------- PARTICULAS -------------------- */
+#particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* -------------------- TEXTOS -------------------- */
 .text {
-  position:absolute;
-  opacity:0;
-  text-align:center;
-  font-size:2.5em;
-  font-weight:700;
-  color:#fff;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-  white-space: pre-wrap;
+  position: absolute;
+  text-align: center;
+  color: #ffe0e0;
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.5rem, 5vw, 3rem); /* Adaptable a pantalla */
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 2;
 }
 
-/* Pregunta más arriba */
-#text2 {
-  top: 25%;
-}
-
-/* Corazón más abajo */
+/* Corazón */
 #heart {
-  font-size:4.5em;
-  color:#ff2d55;
-  opacity:0;
-  position:absolute;
-  bottom:10%;
-  animation:heartbeat 1s infinite;
+  position: absolute;
+  font-size: clamp(2rem, 8vw, 5rem);
+  opacity: 0;
+  color: #ff4d6d;
+  transition: opacity 0.5s ease;
+  z-index: 2;
 }
 
-@keyframes heartbeat {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.3); }
-}
-
-/* Carta inicial (sobre) */
-#envelope {
-  font-size:5em;
-  opacity:0;
-  position:absolute;
-  transition: transform 1s, opacity 1s;
-}
-
-/* Carta abierta con papel */
-#card {
-  position:absolute;
-  width:60%;
-  height:60%;
-  background:#fff;
-  border-radius:15px;
-  transform: scale(0) rotateX(-90deg);
-  transform-origin: top;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-  transition: transform 2s ease;
+/* Sobre y carta */
+#envelope, #card {
+  position: absolute;
+  font-size: clamp(3rem, 10vw, 6rem);
+  opacity: 0;
+  z-index: 2;
+  transition: all 1s ease;
+  transform: scale(0.8) rotateX(90deg);
+  color: #ffd6d6;
 }
 
 #cardContent {
-  font-family:'Pacifico', cursive;
-  color:#333;
-  font-size:1.2em;
-  line-height:1.5em;
-  opacity:0;
-  text-align:left;
-  overflow-y:auto;
-  height:100%;
-  transition: opacity 2s ease;
+  opacity: 0;
+  padding: 20px;
+  color: #fff;
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  line-height: 1.5;
+  max-width: 90vw;
+  background: rgba(0,0,0,0.3);
+  border-radius: 15px;
+  text-align: center;
 }
 
-/* Temporizador */
+/* Contador grande y centrado */
 #counter {
-  position:absolute;
-  bottom:20px;
-  font-size:1.5em;
-  color:#fff;
-  opacity:0;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
-  transition: opacity 2s;
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: #ffb3b3;
+  font-weight: bold;
+  opacity: 0;
+  z-index: 3;
+  text-shadow: 0 0 10px #ff7f7f;
 }
+
+/* -------------------- CURSOR PULSANTE (opcional) -------------------- */
+.text::after {
+  content: '|';
+  margin-left: 5px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+/* -------------------- CORAZONES AL TOCAR -------------------- */
+.heart-fly {
+  position: absolute;
+  font-size: 1.5rem;
+  color: #ff4d6d;
+  pointer-events: none;
+  animation: flyUp 1.5s ease-out forwards;
+  z-index: 5;
+}
+
+@keyframes flyUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
+}
+
